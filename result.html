@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado do Quiz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <img src="img/logo.png" alt="Gabi Nunes - Imagem e Estilo" class="logo">
+            <h1>Seu Estilo Pessoal</h1>
+            <p id="resultText">Carregando...</p>
+        </header>
+        <main>
+            <p>Recomendamos o ebook "Os 7 Estilos Universais" para você!</p>
+            <a href="[INSIRA LINK DA HOTMART]" target="_blank"><button id="buyEbook">Comprar Ebook</button></a>
+        </main>
+        <footer>
+            <p>Criado por Rodrigo Alvarenga</p>
+        </footer>
+    </div>
+    <script>
+        const score = parseInt(localStorage.getItem("quizScore")) || 0;
+        const styles = ["Clássico", "Moderno", "Romântico", "Criativo", "Casual", "Elegante", "Esportivo"];
+        const styleIndex = Math.min(Math.floor((score - 12) / 12), 6); // 12-84 pontos, mapeia para 0-6
+        document.querySelector("#resultText").innerText = `Seu estilo é ${styles[styleIndex]}!`;
+    </script>
+</body>
+
+</html>
