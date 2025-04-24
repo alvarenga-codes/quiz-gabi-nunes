@@ -13,12 +13,29 @@
 
 body {
   font-family: 'Lora', serif;
-  background: var(--background);
+  background: var(--background); /* Mantém o creme como fallback */
   color: var(--text-color);
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative; /* Necessário para o pseudo-elemento */
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('img/gabi.png'); /* Caminho da foto */
+  background-size: contain; /* Cobre toda a página */
+  background-position: left; /* Centraliza a imagem */
+  background-repeat: no-repeat; /* Sem repetição */
+  opacity: 0.3; /* Transparência de 30% */
+  z-index: -1; /* Coloca atrás do conteúdo */
 }
 
 .container {
@@ -26,6 +43,9 @@ body {
   padding: 30px;
   text-align: center;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 250, 236, 0.9); /* Fundo creme com leve transparência */
+  position: relative; /* Garante que o conteúdo fique acima do ::before */
+  border-radius: 10px;
 }
 
 header {
