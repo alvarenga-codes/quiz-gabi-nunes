@@ -162,7 +162,7 @@ p {
   padding: 14px 30px;
   border: 2px solid var(--text-green);
   border-radius: 8px;
-  background-color: var(--text-beige);
+  background-color: var(--background);
   color: var(--text-color);
   font-size: 1.2em;
   font-weight: 700;
