@@ -159,19 +159,22 @@ p {
 }
 
 #buyEbook {
-  padding: 12px 25px;
-  border: none;
-  border-radius: 6px;
+  padding: 14px 30px;
+  border: 2px solid var(--text-green);
+  border-radius: 8px;
   background-color: var(--text-beige);
   color: var(--text-color);
-  font-size: 1.1em;
+  font-size: 1.2em;
+  font-weight: 700;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.1s ease;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
 }
 
 #buyEbook:hover {
   background-color: var(--text-green);
   color: var(--background);
+  transform: translateY(-2px);
 }
 
 #buyEbook:focus {
@@ -186,33 +189,101 @@ footer {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (max-width: 600px) {
   .container {
     padding: 15px;
   }
+
   .logo {
     max-width: 120px;
   }
+
   .options {
     grid-template-columns: 1fr;
   }
+
   .option {
     padding: 10px;
     font-size: 0.9em;
   }
+
   h1 {
     font-size: 1.8em;
   }
+
   #startQuiz {
     padding: 10px 20px;
     font-size: 1em;
   }
+
   #nextQuestion {
     padding: 10px 25px;
     font-size: 1em;
   }
+
+  .subtitle {
+    font-size: 1em;
+  }
+
+  .old-price {
+    font-size: 1em;
+  }
+
+  .new-price {
+    font-size: 1.3em;
+  }
+
+  .urgency {
+    font-size: 0.9em;
+  }
+
+  #buyEbook {
+    padding: 12px 25px;
+    font-size: 1em;
+  }
+}
+
+/* Subtítulo */
+.subtitle {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+  color: var(--text-color);
+}
+
+/* Seção de preço */
+.price-section {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.old-price {
+  font-size: 1.1em;
+  color: #666;
+  text-decoration: line-through;
+  margin-bottom: 5px;
+}
+
+.new-price {
+  font-size: 1.5em;
+  font-weight: 700;
+  color: var(--text-green);
+  /* Verde escuro */
+  margin-bottom: 5px;
+}
+
+.urgency {
+  font-size: 1em;
+  color: var(--text-color);
+  font-style: italic;
 }
