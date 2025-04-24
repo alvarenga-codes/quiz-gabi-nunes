@@ -29,7 +29,7 @@ body {
 }
 
 header {
-  background: linear-gradient(135deg, var(--text-beige), var(--background));
+  background: var(--text-beige);
   padding: 15px;
   border-radius: 8px;
 }
@@ -46,8 +46,8 @@ p {
 }
 
 .logo {
-  max-width: 150px;
-  margin-bottom: 20px;
+  max-width: 180px;
+  /* margin-bottom: 20px; */
 }
 
 .progress {
