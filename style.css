@@ -180,25 +180,26 @@ p {
 
 #buyEbook {
   padding: 14px 30px;
-  border: 2px solid var(--text-green);
+  border: 2px solid var(--text-beige);
   border-radius: 8px;
-  background-color: var(--background);
-  color: var(--text-color);
+  background-color: var(--text-green);
+  color: var(--background);
   font-size: 1.2em;
   font-weight: 700;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease, transform 0.1s ease;
+  transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease, transform 0.1s ease;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
 }
 
 #buyEbook:hover {
-  background-color: var(--text-green);
-  color: var(--background);
+  background-color: var(--background);
+  border: 2px solid var(--text-color);
+  color: var(--text-green);
   transform: translateY(-2px);
 }
 
 #buyEbook:focus {
-  outline: 2px solid var(--text-green);
+  outline: 2px solid var(--text-beige);
   outline-offset: 2px;
 }
 
