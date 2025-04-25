@@ -1,26 +1,162 @@
+// Array de perguntas e opções
 const questions = [
-  { question: "Qual dessas opções melhor descreve seu guarda-roupa?", options: ["Clássico", "Moderno", "Romântico", "Criativo", "Casual", "Elegante", "Esportivo"] },
-  { question: "Que tipo de cores você prefere usar?", options: ["Neutras", "Vibrantes", "Pastel", "Escuras", "Metálicas", "Brancas", "Coloridas"] },
-  { question: "Qual acessório você mais usa?", options: ["Bolsa clássica", "Óculos modernos", "Lenços", "Chapéu", "Tênis", "Joias", "Mochila"] },
-  { question: "Como você descreve seu estilo no trabalho?", options: ["Formal", "Despojado", "Romântico", "Criativo", "Casual", "Elegante", "Esportivo"] },
-  { question: "Que tipo de sapato você prefere?", options: ["Salto alto", "Sapatilha", "Bota", "Tênis", "Sandália", "Mocassim", "Rasteirinha"] },
-  { question: "Qual é sua peça de roupa favorita?", options: ["Blazer", "Camiseta", "Vestido", "Calça jeans", "Saia", "Terno", "Jaqueta"] },
-  { question: "Você prefere estampas ou lisos?", options: ["Lisos", "Florais", "Listras", "Poás", "Geométricos", "Animal print", "Mix"] },
-  { question: "Como você se veste para um evento?", options: ["Clássico", "Moderno", "Romântico", "Criativo", "Casual", "Elegante", "Esportivo"] },
-  { question: "Qual é sua estação favorita para se vestir?", options: ["Primavera", "Verão", "Outono", "Inverno", "Todas", "Nenhuma", "Depende"] },
-  { question: "Você gosta de experimentar tendências?", options: ["Sempre", "Às vezes", "Raramente", "Nunca", "Depende", "Sim", "Não"] },
-  { question: "Qual é seu tecido favorito?", options: ["Algodão", "Seda", "Jeans", "Lã", "Linho", "Couro", "Sintético"] },
-  { question: "Como você define seu estilo pessoal?", options: ["Clássico", "Moderno", "Romântico", "Criativo", "Casual", "Elegante", "Esportivo"] }
+  {
+    question: "Quando você tem um evento importante, como escolhe o look?",
+    options: [
+      "Algo com cortes modernos e peças marcantes", // A: Dramático
+      "Prefiro roupas clássicas e bem estruturadas", // B: Clássico
+      "Um vestido delicado, com babados ou rendas", // C: Romântico
+      "Algo confortável, mas arrumadinho", // D: Casual
+      "Peças que valorizam meu corpo e transmitem sensualidade", // E: Sexy
+      "Escolho algo criativo e diferente, que fuja do óbvio", // F: Criativo
+      "Roupas com tecidos sofisticados e acabamento impecável" // G: Elegante
+    ]
+  },
+  {
+    question: "Qual calçado melhor te representa?",
+    options: [
+      "Coturno preto",
+      "Sandália salto bloco nude",
+      "Sapatilha bico fino",
+      "Tênis casual",
+      "Sandália de tiras finas e salto alto",
+      "Sapato metalizado ou colorido",
+      "Scarpin alto e com bom acabamento"
+    ]
+  },
+  {
+    question: "Em relação à maquiagem, você prefere:",
+    options: [
+      "Um olho esfumado ou um batom marcante",
+      "Maquiagem leve e discreta",
+      "Blush rosado e um visual feminino",
+      "Praticidade: BB cream e rímel são suficientes",
+      "Pele iluminada e boca destacada",
+      "Algo criativo, como delineado colorido ou batom diferente",
+      "Um visual impecável e bem finalizado"
+    ]
+  },
+  {
+    question: "Qual peça não pode faltar no seu guarda-roupa?",
+    options: [
+      "Vestido midi estruturado preto",
+      "Camisa de alfaiataria",
+      "Saia rodada ou vestido romântico",
+      "Calça jeans confortável",
+      "Vestido justo ou decotado",
+      "Kimono estampado ou peça vintage",
+      "Terninho ou vestido midi elegante"
+    ]
+  },
+  {
+    question: "O que você mais valoriza na hora de se vestir?",
+    options: [
+      "Impacto e originalidade",
+      "Atemporalidade e elegância",
+      "Delicadeza e feminilidade",
+      "Conforto e praticidade",
+      "Sensualidade e poder",
+      "Criatividade e autenticidade",
+      "Sofisticação e harmonia"
+    ]
+  },
+  {
+    question: "Qual dessas frases mais te representa?",
+    options: [
+      "“Adoro impactar e surpreender”",
+      "“Menos é mais”",
+      "“Amo detalhes delicados”",
+      "Gosto de me sentir livre e confortável”",
+      "“Quero me sentir poderosa”",
+      "“Me visto com ousadia e alegria”",
+      "“Busco sempre parecer elegante e refinada”"
+    ]
+  },
+  {
+    question: "O que você admira no look de uma mulher?",
+    options: [
+      "Comunicação mais impactante e moderna",
+      "Refinamento e atemporalidade",
+      "Delicadeza e doçura",
+      "Jovialidade e despojamento",
+      "Sensualidade e feminilidade",
+      "Alegria e dinamismo",
+      "Sofisticação e elegância"
+    ]
+  },
+  {
+    question: "Como você organiza seu guarda-roupa?",
+    options: [
+      "Por looks prontos para ocasiões",
+      "Por cores neutras e clássicas",
+      "Por categorias e peças delicadas",
+      "Por praticidade e uso no dia a dia",
+      "Por ocasiões em que quero me destacar",
+      "Por estilo, humor ou inspiração",
+      "Tudo bem organizado e coordenado"
+    ]
+  },
+  {
+    question: "Como você descreveria seu estilo com uma palavra?",
+    options: [
+      "Ousado",
+      "Tradicional",
+      "Delicado",
+      "Básico",
+      "Sensual",
+      "Excêntrico",
+      "Refinado"
+    ]
+  },
+  {
+    question: "Seu acessório preferido é:",
+    options: [
+      "Um maxi colar ou brinco statement",
+      "Pérolas ou relógio clássico",
+      "Laços, flores ou acessórios delicados",
+      "Tênis ou mochila",
+      "Brincos de argola ou salto alto",
+      "Peças artesanais ou vintage",
+      "Óculos escuros sofisticados"
+    ]
+  },
+  {
+    question: "Como você lida com tendências?",
+    options: [
+      "Amo e estou sempre testando as novas",
+      "Só adoto se for algo que não sai de moda",
+      "Uso se tiver um toque feminino",
+      "Só se forem fáceis de adaptar à rotina",
+      "Escolho as mais sensuais e ousadas",
+      "Crio minhas próprias versões",
+      "Prefiro clássicos, mas atualizados"
+    ]
+  },
+  {
+    question: "O que as pessoas costumam dizer sobre seu visual?",
+    options: [
+      "“Você sempre surpreende!”",
+      "“Muito elegante!”",
+      "“Tão meiga e feminina”",
+      "“Bem prática e descontraída”",
+      "“Uau, que mulherão!”",
+      "“Você tem um estilo único”",
+      "“Sempre tão chique!”"
+    ]
+  }
 ];
 
+// Lógica do quiz
 let currentQuestion = 0;
-let score = 0;
-
-const questionElement = document.querySelector("h1");
-const descriptionElement = document.querySelector("p");
-const optionsContainer = document.querySelector(".options");
+let answers = [];
+const styles = ["Dramático", "Clássico", "Romântico", "Casual", "Sexy", "Criativo", "Elegante"];
+const questionElement = document.querySelector("#question");
+const descriptionElement = document.querySelector("#description");
+const optionsContainer = document.querySelector("#options");
 const nextButton = document.querySelector("#nextQuestion");
+const startScroll = document.querySelector(".container")
 
+//Funções
 function loadQuestion() {
   const q = questions[currentQuestion];
   questionElement.innerText = `Pergunta ${currentQuestion + 1} de 12`;
@@ -30,7 +166,7 @@ function loadQuestion() {
     const btn = document.createElement("button");
     btn.className = "option";
     btn.innerText = option;
-    btn.setAttribute("data-value", index + 1);
+    btn.setAttribute("data-value", index);
     btn.addEventListener("click", () => {
       optionsContainer.querySelectorAll(".option").forEach(opt => opt.classList.remove("selected"));
       btn.classList.add("selected");
@@ -41,20 +177,42 @@ function loadQuestion() {
   document.querySelector(".progress-bar").style.width = `${((currentQuestion + 1) / questions.length) * 100}%`;
 }
 
+//Eventos
 nextButton.addEventListener("click", () => {
-  const selected = optionsContainer.querySelector(".option.selected");
-  if (selected) {
-    score += parseInt(selected.getAttribute("data-value"));
-  }
-  currentQuestion++;
-  if (currentQuestion < questions.length) {
-    loadQuestion();
-    nextButton.disabled = true;
-    optionsContainer.querySelectorAll(".option").forEach(opt => opt.classList.remove("selected"));
-  } else {
-    localStorage.setItem("quizScore", score);
-    window.location.href = "result.html";
+  const selectedOption = optionsContainer.querySelector(".option.selected");
+  if (selectedOption) {
+    const value = parseInt(selectedOption.getAttribute("data-value"));
+    answers.push(value);
+    localStorage.setItem("quizAnswers", JSON.stringify(answers));
+    currentQuestion++;
+    if (currentQuestion < questions.length) {
+      loadQuestion();
+      nextButton.disabled = true;
+      optionsContainer.querySelectorAll(".option").forEach(opt => opt.classList.remove("selected"));
+    } else {
+      // Contar a predominância de cada estilo
+      const styleCounts = answers.reduce((acc, value) => {
+        acc[value] = (acc[value] || 0) + 1;
+        return acc;
+      }, {});
+      // Encontrar o estilo com mais respostas
+      let maxCount = 0;
+      let predominantStyle = 0;
+      for (let i = 0; i < styles.length; i++) {
+        if ((styleCounts[i] || 0) > maxCount) {
+          maxCount = styleCounts[i];
+          predominantStyle = i;
+        }
+      }
+      localStorage.setItem("quizResult", styles[predominantStyle]);
+      window.location.href = "result.html";
+    }
+    startScroll.scrollIntoView({behavior: 'smooth' });
+
   }
 });
 
-loadQuestion();
+document.addEventListener("DOMContentLoaded", () => {
+  answers = JSON.parse(localStorage.getItem("quizAnswers")) || [];
+  loadQuestion();
+});
