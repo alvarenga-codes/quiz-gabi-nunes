@@ -32,7 +32,7 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('img/gabi.png');
+  background-image: url('gabi.png');
   /* Caminho da foto */
   background-size: contain;
   /* Cobre toda a página */
