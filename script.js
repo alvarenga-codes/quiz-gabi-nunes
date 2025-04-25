@@ -66,7 +66,7 @@ const questions = [
       "“Adoro impactar e surpreender”",
       "“Menos é mais”",
       "“Amo detalhes delicados”",
-      "Gosto de me sentir livre e confortável”",
+      "“Gosto de me sentir livre e confortável”",
       "“Quero me sentir poderosa”",
       "“Me visto com ousadia e alegria”",
       "“Busco sempre parecer elegante e refinada”"
@@ -148,16 +148,20 @@ const questions = [
 
 // Lógica do quiz
 let currentQuestion = 0;
-let answers = [];
+let answers = []; // Inicializar vazio, será limpo ao carregar a página
 const styles = ["Dramático", "Clássico", "Romântico", "Casual", "Sexy", "Criativo", "Elegante"];
 const questionElement = document.querySelector("#question");
 const descriptionElement = document.querySelector("#description");
 const optionsContainer = document.querySelector("#options");
 const nextButton = document.querySelector("#nextQuestion");
-const startScroll = document.querySelector(".container")
 
-//Funções
 function loadQuestion() {
+  // Verificar se os elementos existem
+  if (!questionElement || !descriptionElement || !optionsContainer) {
+    console.error("Um ou mais elementos não foram encontrados: #question, #description ou #options");
+    return;
+  }
+
   const q = questions[currentQuestion];
   questionElement.innerText = `Pergunta ${currentQuestion + 1} de 12`;
   descriptionElement.innerText = q.question;
@@ -174,12 +178,18 @@ function loadQuestion() {
     });
     optionsContainer.appendChild(btn);
   });
-  document.querySelector(".progress-bar").style.width = `${((currentQuestion + 1) / questions.length) * 100}%`;
+  //botão da última pergunta
+  if (currentQuestion + 1 === 12) {
+    nextButton.innerText = "Seu estilo pessoal é..."
+  }
+  const progressBar = document.querySelector(".progress-bar");
+  if (progressBar) {
+    progressBar.style.width = `${((currentQuestion + 1) / questions.length) * 100}%`;
+  }
 }
 
-//Eventos
-nextButton.addEventListener("click", () => {
-  const selectedOption = optionsContainer.querySelector(".option.selected");
+nextButton?.addEventListener("click", () => {
+  const selectedOption = optionsContainer?.querySelector(".option.selected");
   if (selectedOption) {
     const value = parseInt(selectedOption.getAttribute("data-value"));
     answers.push(value);
@@ -199,20 +209,27 @@ nextButton.addEventListener("click", () => {
       let maxCount = 0;
       let predominantStyle = 0;
       for (let i = 0; i < styles.length; i++) {
-        if ((styleCounts[i] || 0) > maxCount) {
-          maxCount = styleCounts[i];
+        const count = styleCounts[i] || 0;
+        if (count > maxCount) {
+          maxCount = count;
           predominantStyle = i;
         }
       }
+      console.log("Contagem de estilos:", styleCounts);
+      console.log("Estilo predominante:", styles[predominantStyle], "com", maxCount, "votos");
       localStorage.setItem("quizResult", styles[predominantStyle]);
       window.location.href = "result.html";
     }
-    startScroll.scrollIntoView({behavior: 'smooth' });
-
   }
+  document.querySelector("#question").scrollIntoView({behavior: "smooth", block: "start"});
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-  answers = JSON.parse(localStorage.getItem("quizAnswers")) || [];
-  loadQuestion();
-});
+// Garantir que o script só rode na página correta e limpar respostas antigas
+if (document.querySelector("#question")) {
+  document.addEventListener("DOMContentLoaded", () => {
+    // Limpar respostas antigas do localStorage ao carregar a página
+    localStorage.removeItem("quizAnswers");
+    answers = []; // Garantir que o array comece vazio
+    loadQuestion();
+  });
+}
