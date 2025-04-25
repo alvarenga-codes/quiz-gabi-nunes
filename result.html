@@ -12,10 +12,13 @@
 <body>
     <div class="container">
         <header>
-            <img src="logo.png" alt="Gabi Nunes - Imagem e Estilo" class="logo">
+            <!-- <img src="img/logo.png" alt="Gabi Nunes - Imagem e Estilo" class="logo"> -->
+            <div class="result-container">
             <h1>Seu Estilo Pessoal é <span id="resultText">Carregando...</span>!</h1>
-            <p class="subtitle">Conheça o ebook <strong>"Os 7 Estilos Universais"</strong> e descubra como valorizar
-                ainda mais o seu estilo!</p>
+        </div>
+        <hr>
+            <p class="subtitle subtitle-strong"><strong>Seu estilo merece mais!</strong></p>
+            <p class="subtitle">Clique no botão abaixo e aprofunde seu autoconhecimento com um material exclusivo para mulheres como você!</p>
             <div class="price-section">
                 <p class="old-price">De R$ 97,00</p>
                 <p class="new-price">Por R$ 47,00</p>
@@ -28,13 +31,24 @@
         </footer>
     </div>
     <script>
-        const score = parseInt(localStorage.getItem("quizScore")) || 0;
-        const styles = ["Clássico", "Moderno", "Romântico", "Criativo", "Casual", "Elegante", "Esportivo"];
-        const styleIndex = Math.min(Math.floor((score - 12) / 12), 6); // 12-84 pontos, mapeia para 0-6
+        const result = localStorage.getItem("quizResult") || "Clássico";
+        const descriptions = {
+          "Dramático": "Gosta de impactar e se expressar por meio da moda.",
+          "Clássico": "Valoriza elegância, tradição e sofisticação atemporal.",
+          "Romântico": "Delicadeza, feminilidade e suavidade são suas marcas registradas.",
+          "Casual": "Conforto, praticidade e um toque descomplicado te definem.",
+          "Sexy": "Aposta em peças que valorizam o corpo e transbordam confiança.",
+          "Criativo": "Looks autênticos, originais e cheios de personalidade.",
+          "Elegante": "Refinamento e luxo discreto estão sempre presentes no seu visual."
+        };
         const resultText = document.querySelector("#resultText");
-        resultText.innerText = styles[styleIndex];
-        resultText.style.color = "#454e32"; // Verde escuro para destaque
-    </script>
+        resultText.innerText = result;
+        resultText.style.color = "#454e32";
+        const descriptionElement = document.createElement("p");
+        descriptionElement.className = "result-description";
+        descriptionElement.innerText = descriptions[result];
+        document.querySelector(".result-container").appendChild(descriptionElement);
+      </script>
 </body>
 
 </html>
