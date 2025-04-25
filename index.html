@@ -12,17 +12,25 @@
 <body>
   <div class="container">
     <header>
-      <img src="logo.png" alt="Gabi Nunes - Imagem e Estilo" class="logo">
-      <h1>Vista-se como você se sente: <span>única</span>!</h1>
+      <img src="img/logo.png" alt="Gabi Nunes - Imagem e Estilo" class="logo">
+      <h1>Se vista como você se sente: <span>única</span>!</h1>
       <p class="intro-paragraph">Descubra seu estilo com este quiz leve e transformador</p>
     </header>
     <main>
-      <a href="quiz.html"><button id="startQuiz">Vem comigo!</button></a>
+      <a href="quiz.html"><button id="startQuiz">Vamos lá!</button></a>
     </main>
     <footer>
       <p>Criado por Rodrigo Alvarenga</p>
     </footer>
   </div>
+  <script>
+    document.querySelector("#startQuiz").addEventListener("click", () => {
+      // Limpar o localStorage para iniciar um novo quiz
+      localStorage.removeItem("quizAnswers");
+      localStorage.removeItem("quizResult");
+      window.location.href = "quiz.html";
+    });
+  </script>
 </body>
 
 </html>
