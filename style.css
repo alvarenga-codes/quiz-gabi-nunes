@@ -23,6 +23,7 @@ body {
   position: relative;
   /* Necessário para o pseudo-elemento */
   overflow-x: hidden;
+  line-height: 1.4;
 }
 
 body::before {
@@ -45,7 +46,9 @@ body::before {
 }
 
 .container {
-  max-width: 700px;
+  width: 600px;
+  max-width: 90%;
+  /* para não transbordar em telas pequenas */
   padding: 30px;
   text-align: center;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -76,6 +79,15 @@ h1 {
 p {
   font-size: 1.1em;
   margin-bottom: 25px;
+}
+
+span {
+  text-transform: uppercase;
+  color: var(--verde);
+}
+
+.intro-paragraph {
+  font-weight: bold;
 }
 
 .logo {
@@ -158,8 +170,6 @@ p {
   outline-offset: 2px;
 }
 
-
-
 #nextQuestion {
   padding: 12px 30px;
   border: 2px solid var(--claro);
@@ -224,6 +234,17 @@ p {
   outline-offset: 2px;
 }
 
+#description {
+  font-weight: bold;
+  font-size: 1.4em;
+  border: 2px solid var(--claro);
+  border-radius: 8px;
+  background-color: var(--claro);
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
 footer {
   margin-top: 40px;
   font-size: 0.8em;
@@ -242,49 +263,78 @@ footer {
   }
 }
 
+.result-description {
+  font-size: 1.2rem;
+  margin-top: 16px;
+  color: var(--marrom);
+  line-height: 1.4;
+}
+
+.result-container {
+  border: 2px solid var(--claro);
+  border-radius: 8px;
+  background-color: var(--claro);
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  max-width: 90%;
+  margin: 20px auto;
+}
+
 /* Responsividade celular */
 @media (max-width: 600px) {
   body {
     align-items: flex-end;
-    /* Move o container para a parte inferior */
     padding-bottom: 20px;
-    /* Espaço na parte inferior */
   }
 
   body::before {
-    background-position: left top;
-    /* Foca na parte superior para mostrar o rosto */
+    background-position: center top;
     background-size: auto 70vh;
-    /* Reduz a altura da imagem para focar no rosto */
   }
 
   .container {
     padding: 15px;
-    margin-top: 30px;
-    /* Espaço acima para não colar na borda superior */
-    margin-bottom: 20px;
-    /* Espaço abaixo para não colar na borda inferior */
+    margin-top: 20px; /* Reduzido para melhor ajuste */
+    margin-bottom: 15px;
     max-height: 70vh;
-    /* Limita a altura do container para caber na tela */
     overflow-y: auto;
-    /* Adiciona scroll se o conteúdo for muito longo */
   }
 
   .logo {
     max-width: 120px;
   }
 
-  .options {
-    grid-template-columns: 1fr;
+  header {
+    padding: 10px; /* Reduzido para mobile */
   }
 
-  .option {
+  header.header-quiz {
     padding: 10px;
-    font-size: 0.9em;
   }
 
   h1 {
-    font-size: 1.8em;
+    font-size: 1.6em; /* Ajustado para melhor proporção */
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 0.9em; /* Ajustado para legibilidade */
+    margin-bottom: 15px;
+  }
+
+  span {
+    font-size: 0.9em; /* Ajuste para o texto dentro do span (ex.: resultado) */
+  }
+
+  .intro-paragraph {
+    font-size: 0.9em;
   }
 
   #startQuiz {
@@ -292,38 +342,98 @@ footer {
     font-size: 1em;
   }
 
+  .progress {
+    height: 8px; /* Reduzido para mobile */
+    margin-bottom: 15px;
+  }
+
+  .options {
+    grid-template-columns: 1fr;
+    gap: 8px; /* Reduzido para mobile */
+  }
+
+  .option {
+    padding: 10px;
+    font-size: 0.9em;
+  }
+
   #nextQuestion {
     padding: 10px 25px;
     font-size: 1em;
+  }
+
+  #description {
+    font-size: 1.2em; /* Reduzido para mobile */
+    padding: 15px;
+    margin-top: 15px;
+  }
+
+  .result-container {
+    padding: 15px;
+    margin: 15px auto;
+  }
+
+  .result-description {
+    font-size: 0.9em;
+    margin-top: 10px;
   }
 
   .subtitle {
     font-size: 1em;
   }
 
+  .subtitle.subtitle-strong {
+    font-size: 1.4em; /* Reduzido para mobile */
+  }
+
+  .price-section {
+    margin-bottom: 15px;
+  }
+
   .old-price {
-    font-size: 1em;
+    font-size: 0.9em;
   }
 
   .new-price {
-    font-size: 1.3em;
+    font-size: 1.2em;
   }
 
   .urgency {
-    font-size: 0.9em;
+    font-size: 0.8em;
   }
 
   #buyEbook {
     padding: 12px 25px;
     font-size: 1em;
   }
+
+  hr {
+    margin: 15px 0; /* Reduzido para mobile */
+  }
+
+  footer {
+    margin-top: 20px; /* Reduzido para mobile */
+    font-size: 0.7em;
+  }
+}
+
+hr {
+  border: none;
+  border-top: 2px solid var(--claro);
+  margin: 20px 0;
 }
 
 /* Subtítulo */
 .subtitle {
+  text-transform: capitalize;
   font-size: 1.2em;
   margin-bottom: 30px;
   color: var(--marrom);
+}
+
+.subtitle.subtitle-strong {
+  font-weight: 700;
+  font-size: 1.8em;
 }
 
 /* Seção de preço */
