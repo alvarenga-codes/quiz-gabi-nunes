@@ -146,26 +146,43 @@ const questions = [
   }
 ];
 
+//Pergunta de desempate, caso haja algum
+const tiebreakerQuestion = [
+  "Resposta Dramático", // (Dramático)
+  "Resposta Clássico",   // (Clássico)
+  "Resposta Romântico",  // (Romântico)
+  "Resposta Casual",     // (Casual)
+  "Resposta Sexy",       // (Sexy)
+  "Resposta Criativo",   // (Criativo)
+  "Resposta Elegante"    // (Elegante)
+];
+
 // Lógica do quiz
 let currentQuestion = 0;
-let answers = []; // Inicializar vazio, será limpo ao carregar a página
+let answers = []; //Respostas
 const styles = ["Dramático", "Clássico", "Romântico", "Casual", "Sexy", "Criativo", "Elegante"];
 const questionElement = document.querySelector("#question");
 const descriptionElement = document.querySelector("#description");
 const optionsContainer = document.querySelector("#options");
 const nextButton = document.querySelector("#nextQuestion");
 
+// Verificar se há um desempate salvo no localStorage
+let tiebreakerChoice = localStorage.getItem("tiebreakerChoice") ? parseInt(localStorage.getItem("tiebreakerChoice")) : null;
+
+//Função de carregar questões
 function loadQuestion() {
-  // Verificar se os elementos existem
+  //Código para controlar erro de carregamento
   if (!questionElement || !descriptionElement || !optionsContainer) {
     console.error("Um ou mais elementos não foram encontrados: #question, #description ou #options");
     return;
   }
 
+  //carregamento
   const q = questions[currentQuestion];
   questionElement.innerText = `Pergunta ${currentQuestion + 1} de 12`;
   descriptionElement.innerText = q.question;
   optionsContainer.innerHTML = "";
+  //criando opções
   q.options.forEach((option, index) => {
     const btn = document.createElement("button");
     btn.className = "option";
@@ -179,22 +196,61 @@ function loadQuestion() {
     optionsContainer.appendChild(btn);
   });
   //botão da última pergunta
-  if (currentQuestion + 1 === 12) {
+  if (currentQuestion + 1 === questions.length) {
     nextButton.innerText = "Seu estilo pessoal é..."
   }
+  //Barra de progresso
   const progressBar = document.querySelector(".progress-bar");
   if (progressBar) {
     progressBar.style.width = `${((currentQuestion + 1) / questions.length) * 100}%`;
   }
 }
 
+//Função para empates
+function loadTiebreakerQuestion(tiedStyles) {
+  questionElement.innerText = "Pergunta de Desempate";
+  descriptionElement.innerText = "Escolha o estilo que mais te representa:";
+  optionsContainer.innerHTML = "";
+  tiedStyles.forEach(index => {
+    const btn = document.createElement("button");
+    btn.className = "option";
+    btn.innerText = tiebreakerQuestion[index];
+    btn.setAttribute("data-value", index);
+    btn.addEventListener("click", () => {
+      optionsContainer.querySelectorAll(".option").forEach(opt => opt.classList.remove("selected"));
+      btn.classList.add("selected");
+      nextButton.disabled = false;
+    });
+    optionsContainer.appendChild(btn);
+  });
+  //Botão de resultado
+  nextButton.innerText = "Seu estilo pessoal é...";
+  //manter o progresso em 100%
+  const progressBar = document.querySelector(".progress-bar");
+  if (progressBar) {
+    progressBar.style.width = "100%";
+  }
+}
+
+//Evento do botão "próxima pergunta" e "Seu estilo é..."
 nextButton?.addEventListener("click", () => {
   const selectedOption = optionsContainer?.querySelector(".option.selected");
   if (selectedOption) {
     const value = parseInt(selectedOption.getAttribute("data-value"));
+
+    // Verificar se estamos na pergunta de desempate
+    if (currentQuestion >= questions.length) {
+      // Salvar a escolha do desempate no localStorage
+      localStorage.setItem("tiebreakerChoice", value);
+      localStorage.setItem("quizResult", styles[value]);
+      window.location.href = "result.html";
+      return;
+    }
+
     answers.push(value);
     localStorage.setItem("quizAnswers", JSON.stringify(answers));
     currentQuestion++;
+
     if (currentQuestion < questions.length) {
       loadQuestion();
       nextButton.disabled = true;
@@ -205,31 +261,50 @@ nextButton?.addEventListener("click", () => {
         acc[value] = (acc[value] || 0) + 1;
         return acc;
       }, {});
-      // Encontrar o estilo com mais respostas
+
+      // Encontrar o maior número de votos
       let maxCount = 0;
-      let predominantStyle = 0;
+      let tiedStyles = [];
       for (let i = 0; i < styles.length; i++) {
         const count = styleCounts[i] || 0;
         if (count > maxCount) {
           maxCount = count;
-          predominantStyle = i;
+          tiedStyles = [i];
+        } else if (count === maxCount && count > 0) {
+          tiedStyles.push(i);
         }
       }
+      //Controle de lançamentos dos estilos no console
       console.log("Contagem de estilos:", styleCounts);
-      console.log("Estilo predominante:", styles[predominantStyle], "com", maxCount, "votos");
-      localStorage.setItem("quizResult", styles[predominantStyle]);
-      window.location.href = "result.html";
+      console.log("Estilos empatados:", tiedStyles.map(index => styles[index]));
+
+      // Verificar se há empate
+      if (tiedStyles.length > 1) {
+        // Há empate, carregar a pergunta de desempate
+        loadTiebreakerQuestion(tiedStyles);
+      } else {
+        // Não há empate, salvar o resultado e redirecionar
+        const predominantStyle = tiedStyles[0];
+        //controle no console
+        console.log("Estilo predominante:", styles[predominantStyle], "com", maxCount, "votos");
+        localStorage.setItem("quizResult", styles[predominantStyle]);
+        //Direcionar para o resultado
+        window.location.href = "result.html";
+      }
     }
   }
-  document.querySelector("#question").scrollIntoView({behavior: "smooth", block: "start"});
+  //Ir para o ínício da tela após clicar no botão
+  document.querySelector("#question").scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
 // Garantir que o script só rode na página correta e limpar respostas antigas
 if (document.querySelector("#question")) {
   document.addEventListener("DOMContentLoaded", () => {
     // Limpar respostas antigas do localStorage ao carregar a página
+    //Necessário para evitar concatenar resultados e ter resultado inesperado
     localStorage.removeItem("quizAnswers");
-    answers = []; // Garantir que o array comece vazio
+    localStorage.removeItem("tiebreakerChoice"); // Limpar escolha de desempate
+    answers = [];
     loadQuestion();
   });
 }
