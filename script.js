@@ -148,13 +148,13 @@ const questions = [
 
 //Pergunta de desempate, caso haja algum
 const tiebreakerQuestion = [
-  "Resposta Dramático", // (Dramático)
-  "Resposta Clássico",   // (Clássico)
-  "Resposta Romântico",  // (Romântico)
-  "Resposta Casual",     // (Casual)
-  "Resposta Sexy",       // (Sexy)
-  "Resposta Criativo",   // (Criativo)
-  "Resposta Elegante"    // (Elegante)
+  "Quero parecer impactante, moderna e ousada.", // (Dramático)
+  "Quero parecer elegante, refinada e confiável.",   // (Clássico)
+  "Quero parecer delicada, feminina e doce.",  // (Romântico)
+  "Quero parecer prática, confortável e descomplicada.",     // (Casual)
+  "Quero parecer poderosa, sensual e segura.",       // (Sexy)
+  "Quero parecer criativa, autêntica e única.",   // (Criativo)
+  "Quero parecer sofisticada, impecável e de presença discreta."    // (Elegante)
 ];
 
 // Lógica do quiz
@@ -208,8 +208,8 @@ function loadQuestion() {
 
 //Função para empates
 function loadTiebreakerQuestion(tiedStyles) {
-  questionElement.innerText = "Pergunta de Desempate";
-  descriptionElement.innerText = "Escolha o estilo que mais te representa:";
+  questionElement.innerText = "Uau! Você brilhou em mais de um estilo... vamos descobrir qual combina mais?";
+  descriptionElement.innerText = "Quando você pensa na imagem que gostaria de transmitir todos os dias, qual dessas opções mais te representa?";
   optionsContainer.innerHTML = "";
   tiedStyles.forEach(index => {
     const btn = document.createElement("button");
@@ -224,7 +224,7 @@ function loadTiebreakerQuestion(tiedStyles) {
     optionsContainer.appendChild(btn);
   });
   //Botão de resultado
-  nextButton.innerText = "Seu estilo pessoal é...";
+  nextButton.innerText = "Seu estilo predominante é...";
   //manter o progresso em 100%
   const progressBar = document.querySelector(".progress-bar");
   if (progressBar) {
