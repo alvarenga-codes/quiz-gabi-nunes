@@ -208,7 +208,7 @@ function loadQuestion() {
 
 //Função para empates
 function loadTiebreakerQuestion(tiedStyles) {
-  questionElement.innerText = "Uau! Você brilhou em mais de um estilo... vamos descobrir qual combina mais?";
+  questionElement.innerText = "Uau! Você brilhou em mais de um estilo! Vamos descobrir qual combina mais?";
   descriptionElement.innerText = "Quando você pensa na imagem que gostaria de transmitir todos os dias, qual dessas opções mais te representa?";
   optionsContainer.innerHTML = "";
   tiedStyles.forEach(index => {
