@@ -101,7 +101,6 @@ span {
   border-radius: 6px;
   background-color: var(--bege);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  /* border: 2px solid var(--claro); */
   color: var(--marrom);
   font-size: 1.1em;
   cursor: pointer;
@@ -246,7 +245,7 @@ span {
 }
 
 footer {
-  margin-top: 40px;
+  margin-top: 20px;
   font-size: 0.8em;
   color: var(--marrom);
 }
@@ -300,11 +299,12 @@ footer {
   }
 
   .container {
+    width: 90%;
     padding: 15px;
-    margin-top: 20px; /* Reduzido para melhor ajuste */
-    margin-bottom: 15px;
+    margin-top: 30px; /* Reduzido para melhor ajuste */
+    margin-bottom: 20px;
     max-height: 70vh;
-    overflow-y: auto;
+    overflow-y: auto; /* Permite rolagem se necessário */
   }
 
   .logo {
@@ -320,8 +320,8 @@ footer {
   }
 
   h1 {
-    font-size: 1.6em; /* Ajustado para melhor proporção */
-    margin-bottom: 10px;
+    font-size: 1.8em;
+    /* margin-bottom: 10px; */
   }
 
   p {
@@ -370,7 +370,8 @@ footer {
 
   .result-container {
     padding: 15px;
-    margin: 15px auto;
+    margin: 10px auto;
+    max-width: 100%;
   }
 
   .result-description {
@@ -379,32 +380,37 @@ footer {
   }
 
   .subtitle {
-    font-size: 1em;
+    font-size: 0.95em;
+    margin: 8px 0;
   }
 
   .subtitle.subtitle-strong {
-    font-size: 1.4em; /* Reduzido para mobile */
+    font-size: 1.2em; 
+    line-height: 1.3; 
+    margin-bottom: 10px;
   }
 
   .price-section {
-    margin-bottom: 15px;
+    margin-bottom: 15px 0;
   }
 
   .old-price {
-    font-size: 0.9em;
+    font-size: 1em;
   }
 
   .new-price {
-    font-size: 1.2em;
+    font-size: 1.3em;
   }
 
   .urgency {
-    font-size: 0.8em;
+    font-size: 0.9em;
+    margin-top: 5px;
   }
 
   #buyEbook {
     padding: 12px 25px;
     font-size: 1em;
+    margin-top: 15px;
   }
 
   hr {
@@ -425,7 +431,7 @@ hr {
 
 /* Subtítulo */
 .subtitle {
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
   font-size: 1.2em;
   margin-bottom: 30px;
   color: var(--marrom);
