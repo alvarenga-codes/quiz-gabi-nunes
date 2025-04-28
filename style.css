@@ -244,10 +244,46 @@ span {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+/* Estilos gerais do footer */
 footer {
   margin-top: 20px;
-  font-size: 0.8em;
-  color: var(--marrom);
+  text-align: center;
+  font-family: 'Lora', serif;
+}
+
+.footer-section {
+  margin-bottom: 15px;
+}
+
+.footer-title {
+  font-size: 1.1em;
+  font-weight: 700;
+  color: #454e32;
+  margin-bottom: 8px;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+footer a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  transition: opacity 0.3s ease, transform 0.1s ease;
+}
+
+.social-icon:hover {
+  opacity: 0.8;
+  transform: scale(1.2);
 }
 
 @keyframes fadeIn {
@@ -301,10 +337,12 @@ footer {
   .container {
     width: 90%;
     padding: 15px;
-    margin-top: 30px; /* Reduzido para melhor ajuste */
+    margin-top: 30px;
+    /* Reduzido para melhor ajuste */
     margin-bottom: 20px;
     max-height: 70vh;
-    overflow-y: auto; /* Permite rolagem se necessário */
+    overflow-y: auto;
+    /* Permite rolagem se necessário */
   }
 
   .logo {
@@ -312,7 +350,8 @@ footer {
   }
 
   header {
-    padding: 10px; /* Reduzido para mobile */
+    padding: 10px;
+    /* Reduzido para mobile */
   }
 
   header.header-quiz {
@@ -325,12 +364,14 @@ footer {
   }
 
   p {
-    font-size: 0.9em; /* Ajustado para legibilidade */
+    font-size: 0.9em;
+    /* Ajustado para legibilidade */
     margin-bottom: 15px;
   }
 
   span {
-    font-size: 0.9em; /* Ajuste para o texto dentro do span (ex.: resultado) */
+    font-size: 0.9em;
+    /* Ajuste para o texto dentro do span (ex.: resultado) */
   }
 
   .intro-paragraph {
@@ -343,13 +384,15 @@ footer {
   }
 
   .progress {
-    height: 8px; /* Reduzido para mobile */
+    height: 8px;
+    /* Reduzido para mobile */
     margin-bottom: 15px;
   }
 
   .options {
     grid-template-columns: 1fr;
-    gap: 8px; /* Reduzido para mobile */
+    gap: 8px;
+    /* Reduzido para mobile */
   }
 
   .option {
@@ -363,7 +406,8 @@ footer {
   }
 
   #description {
-    font-size: 1.2em; /* Reduzido para mobile */
+    font-size: 1.2em;
+    /* Reduzido para mobile */
     padding: 15px;
     margin-top: 15px;
   }
@@ -385,8 +429,8 @@ footer {
   }
 
   .subtitle.subtitle-strong {
-    font-size: 1.2em; 
-    line-height: 1.3; 
+    font-size: 1.2em;
+    line-height: 1.3;
     margin-bottom: 10px;
   }
 
@@ -414,12 +458,27 @@ footer {
   }
 
   hr {
-    margin: 15px 0; /* Reduzido para mobile */
+    margin: 15px 0;
+    /* Reduzido para mobile */
   }
 
-  footer {
-    margin-top: 20px; /* Reduzido para mobile */
-    font-size: 0.7em;
+  .footer-section {
+    margin-bottom: 10px;
+  }
+
+  .footer-title {
+    font-size: 1em;
+  }
+
+  .social-links {
+    /* flex-direction: column; */
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .social-icon {
+    width: 32px;
+    height: 32px;
   }
 }
 
@@ -431,7 +490,6 @@ hr {
 
 /* Subtítulo */
 .subtitle {
-  /* text-transform: capitalize; */
   font-size: 1.2em;
   margin-bottom: 30px;
   color: var(--marrom);
