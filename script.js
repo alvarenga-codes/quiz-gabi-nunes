@@ -111,7 +111,7 @@ const questions = [
   {
     question: "Seu acessório preferido é:",
     options: [
-      "Um maxi colar ou brinco statement",
+      "Um maxi colar ou brinco impactante",
       "Pérolas ou relógio clássico",
       "Laços, flores ou acessórios delicados",
       "Tênis ou mochila",
